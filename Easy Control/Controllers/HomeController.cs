@@ -1,4 +1,5 @@
 ﻿using Easy_Control.Models;
+using Easy_Control.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,6 +7,11 @@ namespace Easy_Control.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        public HomeController(IUsuarioRepositorio usuarioRepositorio)
+        {
+            _usuarioRepositorio = usuarioRepositorio;
+        }
         public IActionResult Index()
         {
             return View();
@@ -24,6 +30,12 @@ namespace Easy_Control.Controllers
         public IActionResult CriarUsuario()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult CriarUsuario(UsuarioModel usuario)
+        {
+             _usuarioRepositorio.Adicionar(usuario);
+            return RedirectToAction("Index");
         }
     }
 }

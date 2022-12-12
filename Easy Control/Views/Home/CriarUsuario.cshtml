@@ -1,18 +1,20 @@
-﻿@{
+﻿@model UsuarioModel
+@{
     ViewData["Title"] = "Criar Item";
 }
+
 <div class="text-center">
 <h1 class="display-3" >Cadastrar Usuário</h1>
 </div>
-<form>
+<form asp-controller="Home" asp-action="CriarUsuario" method="post">
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o e-mail">
+    <input type="email" asp-for="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o e-mail">
     <div id="emailHelp" class="form-text">Entrada do e-mail desejado para cadastro</div>
   </div>
     <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Senha</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite a senha desejada">
+    <input type="password" asp-for="Senha" class="form-control" id="exampleInputPassword1" placeholder="Digite a senha desejada">
   </div>
 
   <button type="submit" class="btn btn-primary">Criar</button>
